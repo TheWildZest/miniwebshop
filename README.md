@@ -1,7 +1,7 @@
 - .env.example-ben be van állítva az adatbáziskapcsolat, a fájl másolható (adatbázis jelszót, felhasználónevet meg kell adni!)
 - composer install
 - php artisan key:generate
-- 'miniwebhsop' nevű adatbázist létre kell hozni
+- 'store' nevű adatbázist létre kell hozni
 - az adatbázishoz hozzá kell adni az alábbi extension-öket:
     - CREATE EXTENSION unaccent;
     - CREATE EXTENSION pg_trgm;
