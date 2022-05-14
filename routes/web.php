@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'getAll'])->name('home');
+
+Route::get('/kereses', [ProductController::class, 'getByKeyword'])->name('searchProducts');
 
 Route::get('login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('sendLogin', [AuthController::class, 'login'])->name('login');
