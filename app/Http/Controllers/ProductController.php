@@ -20,4 +20,8 @@ class ProductController extends Controller
 
         return view('searchProducts', ['products' => $products, 'keyword' => $request->keyword]);
     }
+
+    public function addToCart(Request $request){
+
+    }
 }
