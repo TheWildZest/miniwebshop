@@ -17,8 +17,9 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::get('/', [ProductController::class, 'getAll'])->name('home');
-
 Route::get('/kereses', [ProductController::class, 'getByKeyword'])->name('searchProducts');
+Route::post('/kosarba', [ProductController::class, 'addToCart'])->name('addToCart');
+Route::get('/kosar', [ProductController::class, 'getProductsFromSession'])->name('cart');
 
 Route::get('login', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('sendLogin', [AuthController::class, 'login'])->name('login');

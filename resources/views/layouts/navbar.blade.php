@@ -13,7 +13,7 @@
             @endguest
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Kosár</a>
+                <a class="nav-link" href="/kosar">Kosár</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Rendeléseim</a>
