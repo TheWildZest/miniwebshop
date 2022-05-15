@@ -24,7 +24,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('set null');
             $table->string('product_name', 100);
-            $table->decimal('product_total_price', 10, 2);
+            $table->decimal('product_total_price', 15, 2);
             $table->integer('quantity');
             $table->timestamps();
         });

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('email', 100);
             $table->string('address', 200);
             $table->string('note', 1000);
-            $table->decimal('total', 10, 2)->nullable();
+            $table->decimal('total', 15, 2)->nullable();
             $table->timestamps();
         });
     }

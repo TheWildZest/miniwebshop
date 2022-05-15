@@ -8,6 +8,7 @@ use App\Models\OrderItem;
 use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\DeleteOrderRequest;
 use App\Http\Requests\PlaceOrderRequest;
 use App\Models\User;
 
@@ -66,5 +67,20 @@ class OrderController extends Controller
         session()->forget('cart');
 
         return redirect('/');
+    }
+
+    public function userOrders(){
+        $orders = User::find(Auth::id())->orders;
+
+        return view('userOrders', ['orders' => $orders]);
+    }
+
+    public function deleteOrder(DeleteOrderRequest $request){
+        $validated = $request->validated();
+        $id = $validated['id'];
+
+        Order::findOrFail($id)->delete();
+
+        return redirect()->back();
     }
 }
