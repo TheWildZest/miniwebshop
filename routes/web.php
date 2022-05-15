@@ -24,7 +24,8 @@ Route::post('/kosarba', [ProductController::class, 'addToCart'])->name('addToCar
 Route::get('/kosar', [ProductController::class, 'getProductsFromSession'])->name('cart');
 
 Route::get('/rendeles', [OrderController::class, 'placeOrderForm'])->name('placeOrderForm')->middleware('auth');
-Route::post('/rendeles', [OrderController::class], 'placeOrder')->name('placeOrder')->middleware('auth');
+Route::post('/rendeles', [OrderController::class, 'placeOrder'])->name('placeOrder')->middleware('auth');
+Route::get('/rendeleseim', [OrderController::class, 'userOrders'])->name('userOrders')->middleware('auth');
 
 Route::get('/belepes', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('/belepes', [AuthController::class, 'login'])->name('login');

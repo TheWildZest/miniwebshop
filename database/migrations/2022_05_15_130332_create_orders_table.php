@@ -18,11 +18,12 @@ return new class extends Migration
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
             $table->string('name', 100);
             $table->string('email', 100);
             $table->string('address', 200);
             $table->string('note', 1000);
+            $table->decimal('total', 10, 2)->nullable();
             $table->timestamps();
         });
     }

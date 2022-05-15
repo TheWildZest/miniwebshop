@@ -21,10 +21,11 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->foreignId('product_id')
                 ->constrained()
-                ->onUpdate('set null')
+                ->onUpdate('cascade')
                 ->onDelete('set null');
             $table->string('product_name', 100);
-            $table->decimal('product_purchase_price', 10, 2);
+            $table->decimal('product_total_price', 10, 2);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }
