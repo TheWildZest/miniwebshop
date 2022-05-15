@@ -4,5 +4,14 @@
 @section('content')
     <h1>A kosarad tartalma:</h1>
 
-    {{ print_r($session) }}
+    <div class="container">
+        @foreach ($cart as $product)
+            <x-cart-item-card :product="$product" />
+        @endforeach
+    </div>
+
+    <form action="" method="POST">
+
+        <button href="/" class="btn btn-success">Megveszem</button>
+    </form>
 @endsection
