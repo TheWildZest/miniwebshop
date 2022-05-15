@@ -8,16 +8,23 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bejelentkezés</a>
+                    <a class="nav-link" href="{{ route('showLogin') }}">Bejelentkezés</a>
                 </li>
             @endguest
 
             <li class="nav-item">
                 <a class="nav-link" href="/kosar">Kosár</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Rendeléseim</a>
-            </li>
+
+            @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Rendeléseim</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}">Kilépés</a>
+                </li>
+            @endauth
 
             <!--
             <li class="nav-item dropdown">

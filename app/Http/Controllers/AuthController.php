@@ -10,10 +10,10 @@ class AuthController extends Controller
 {
     public function showLogin(){
         if(!Auth::user()){
-            return view('login/login');
+            return view('login');
         }
 
-        return redirect('schedule/0');
+        return redirect('/');
     }
 
     public function login(Request $request){
@@ -22,10 +22,10 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'can_login' => true], $request['remember'])) {
+        if (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password']], $request['remember'])) {
             $request->session()->regenerate();
 
-            return redirect()->intended('schedule/0');
+            return redirect()->intended('/');
         }
 
         return back()->withInput()->withErrors([
@@ -36,6 +36,6 @@ class AuthController extends Controller
     public function logout(){
         Auth::logout();
 
-        return redirect('/login');
+        return redirect()->route('showLogin');
     }
 }

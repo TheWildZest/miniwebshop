@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -18,8 +19,13 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [ProductController::class, 'getAll'])->name('home');
 Route::get('/kereses', [ProductController::class, 'getByKeyword'])->name('searchProducts');
+
 Route::post('/kosarba', [ProductController::class, 'addToCart'])->name('addToCart');
 Route::get('/kosar', [ProductController::class, 'getProductsFromSession'])->name('cart');
 
-Route::get('login', [AuthController::class, 'showLogin'])->name('showLogin');
-Route::post('sendLogin', [AuthController::class, 'login'])->name('login');
+Route::get('/rendeles', [OrderController::class, 'placeOrderForm'])->name('placeOrderForm')->middleware('auth');
+Route::post('/rendeles', [OrderController::class], 'placeOrder')->name('placeOrder')->middleware('auth');
+
+Route::get('/belepes', [AuthController::class, 'showLogin'])->name('showLogin');
+Route::post('/belepes', [AuthController::class, 'login'])->name('login');
+Route::get('/kilepes', [AuthController::class, 'logout'])->name('logout');
