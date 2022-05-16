@@ -9,7 +9,7 @@
 
         <div>
             <label for="email">Email</label>
-            <input type="email" name="email">
+            <input type="email" name="email" value="{{ old('email') }}">
         </div>
 
         <div>
@@ -21,6 +21,6 @@
             <div class="errorBag">{{ $message }}</div>
         @enderror
 
-        <button type="submit" class="btn btn-succes">Belépés</button>
+        <button type="submit" class="btn btn-success">Belépés</button>
     </form>
 @endsection

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -37,5 +40,25 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect()->route('showLogin');
+    }
+
+    public function showRegister(){
+        if(!Auth::user()){
+            return view('register');
+        }
+
+        return redirect('/');
+    }
+
+    public function register(RegisterRequest $request){
+        $validated = $request->validated();
+
+        User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password'])
+        ]);
+
+        return redirect()->route('login');
     }
 }

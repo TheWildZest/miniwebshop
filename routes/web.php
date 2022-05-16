@@ -27,7 +27,10 @@ Route::get('/rendeles', [OrderController::class, 'placeOrderForm'])->name('place
 Route::post('/rendeles', [OrderController::class, 'placeOrder'])->name('placeOrder')->middleware('auth');
 Route::get('/rendeleseim', [OrderController::class, 'userOrders'])->name('userOrders')->middleware('auth');
 Route::get('/rendelestorol', [OrderController::class, 'deleteOrder'])->name('deleteOrder')->middleware('auth');
+Route::get('/rendelesek', [OrderController::class, 'listOrders'])->name('listOrders')->middleware('auth');
 
 Route::get('/belepes', [AuthController::class, 'showLogin'])->name('showLogin');
 Route::post('/belepes', [AuthController::class, 'login'])->name('login');
 Route::get('/kilepes', [AuthController::class, 'logout'])->name('logout');
+Route::get('/regisztracio', [AuthController::class, 'showRegister'])->name('showRegister');
+Route::post('/regisztracio', [AuthController::class, 'register'])->name('register');

@@ -10,6 +10,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('showLogin') }}">Bejelentkezés</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Regisztráció</a>
+                </li>
             @endguest
 
             <li class="nav-item">
@@ -17,9 +20,15 @@
             </li>
 
             @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('userOrders') }}">Rendeléseim</a>
-                </li>
+                @if (auth()->user()->is_admin)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('listOrders') }}">Rendelések</a>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('userOrders') }}">Rendeléseim</a>
+                    </li>
+                @endif
 
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}">Kilépés</a>
