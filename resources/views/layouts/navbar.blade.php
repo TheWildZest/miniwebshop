@@ -33,6 +33,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}">Kilépés</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" aria-diabled>{{ auth()->user()->email }}</a>
+                </li>
             @endauth
 
             <!--
