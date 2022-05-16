@@ -92,4 +92,10 @@ class OrderController extends Controller
 
         return redirect()->back();
     }
+
+    public function listOrders(){
+        $orders = Order::all();
+
+        return view('listorders', ['orders' => $orders]);
+    }
 }

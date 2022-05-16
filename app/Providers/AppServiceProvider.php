@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrapFive();
 
         Gate::define('delete-order', function (User $user, Order $order) {
-            return $user->id === $order->user_id;
+            return ($user->id === $order->user_id || $user->is_admin);
         });
     }
 }
