@@ -11281,4 +11281,12 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 5px;
+}
 
