@@ -4,6 +4,16 @@
 @section('content')
     <h1>Rendeléseim</h1>
 
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     @if ($orders == null)
         <h2>Nincsenek rendelések</h2>
     @else

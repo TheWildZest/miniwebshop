@@ -12,6 +12,8 @@ use App\Http\Requests\DeleteOrderRequest;
 use App\Http\Requests\PlaceOrderRequest;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Gate;
+
 class OrderController extends Controller
 {
     public function placeOrderForm(){
@@ -79,7 +81,14 @@ class OrderController extends Controller
         $validated = $request->validated();
         $id = $validated['id'];
 
-        Order::findOrFail($id)->delete();
+        $order = Order::findOrFail($id);
+
+        //Check if the user is the owner of the order to delete
+        if (! Gate::allows('delete-order', $order)) {
+            abort(403);
+        }
+
+        $order->delete();
 
         return redirect()->back();
     }

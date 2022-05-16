@@ -31,6 +31,28 @@ class UserSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+        //Create 'non-admin' users
+        DB::table('users')->insert([
+            [
+                'name' => 'test',
+                'email' => 'test@test',
+                'password' => Hash::make('test'),
+                'is_admin' => false,
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'test1',
+                'email' => 'test1@test1',
+                'password' => Hash::make('test1'),
+                'is_admin' => false,
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
+
         User::factory(30)->create();
     }
 }
